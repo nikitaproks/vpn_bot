@@ -20,6 +20,7 @@ jobs:
         # Install dependencies
         -   name: Install dependencies
             run: |
+                pwd
                 ls -al
                 cd telegram
                 export PYTHONDONTWRITEBYTECODE=1
