@@ -1,0 +1,12 @@
+services:
+  telegram:
+    image: mykytaproks/vpn_bot_telegram:${TAG}
+    command: sh -c "poetry run python telegram/main.py"
+    environment:
+      - LINODE_API_KEY=${LINODE_API_KEY}
+      - ALLOWED_CHAT_IDS=${ALLOWED_CHAT_IDS}
+      - STACKSCRIPT_ID=${STACKSCRIPT_ID}
+      - SHADOWSOCKS_PASSWORD=${SHADOWSOCKS_PASSWORD}
+      - BOT_API_KEY=${BOT_API_KEY}
+    volumes:
+        - ./shared:/app/shared

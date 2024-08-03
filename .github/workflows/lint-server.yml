@@ -1,0 +1,31 @@
+name: Python CI
+
+# Controls when the action will run.
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  lint-typecheck:
+    runs-on: ubuntu-latest
+    steps:
+        -   uses: actions/checkout@v3
+        # Set up Python
+        -   name: Set up Python
+            uses: actions/setup-python@v2
+            with:
+                python-version: '3.12'
+        # Install dependencies
+        -   name: Install dependencies
+            run: |
+                cd server
+                export PYTHONDONTWRITEBYTECODE=1
+                pip install --no-cache-dir -r requirements-dev.lock
+        # Run Linting and Typechecking
+        -   name: Type check with MyPy
+            run: |
+                cd server
+                mypy .
+                ruff check
