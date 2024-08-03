@@ -20,12 +20,12 @@ jobs:
         # Install dependencies
         -   name: Install dependencies
             run: |
-                cd server
+                cd telegram
                 export PYTHONDONTWRITEBYTECODE=1
                 pip install --no-cache-dir -r requirements-dev.lock
         # Run Linting and Typechecking
         -   name: Type check with MyPy
             run: |
-                cd server
+                cd telegram
                 mypy .
                 ruff check
