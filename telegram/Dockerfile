@@ -17,7 +17,4 @@ ENV PATH="${PATH}:${POETRY_VENV}/bin"
 COPY . /app/telegram
 WORKDIR /app/telegram
 
-# Set the environment variable to include the shared directory in PYTHONPATH
-ENV PYTHONPATH="/app/shared:${PYTHONPATH}"
-
 RUN poetry install --no-interaction --no-ansi

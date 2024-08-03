@@ -9,7 +9,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 
-from shared.linode_api import LinodeAPI, ShadowsocksStackscriptData, Region, Linode
+from src.linode_api import LinodeAPI, ShadowsocksStackscriptData, Region, Linode
 
 from settings import STACKSCRIPT_ID, SHADOWSOCKS_PASSWORD, LINODE_API_KEY
 

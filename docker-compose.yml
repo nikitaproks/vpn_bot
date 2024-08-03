@@ -8,5 +8,3 @@ services:
       - STACKSCRIPT_ID=${STACKSCRIPT_ID}
       - SHADOWSOCKS_PASSWORD=${SHADOWSOCKS_PASSWORD}
       - BOT_API_KEY=${BOT_API_KEY}
-    volumes:
-        - ./shared:/app/shared

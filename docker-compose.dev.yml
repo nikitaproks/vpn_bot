@@ -5,5 +5,4 @@ services:
       dockerfile: Dockerfile.dev
     command: sh -c "python telegram/main.py"
     env_file: telegram/.env
-    volumes:
-        - ./shared:/app/shared
+    restart: always
