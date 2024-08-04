@@ -51,7 +51,7 @@ async def command_spawn(message: Message, state: FSMContext) -> None:
     linode_api = LinodeAPI(API_KEY_LINODE)
     linodes = linode_api.list_linodes_all()
     vpn_linodes = [
-        linode for linode in linodes if linode.label.lower().startswith("vpn-bot")
+        linode for linode in linodes if linode.label.lower().startswith("vpn-instance")
     ]
     if len(vpn_linodes) >= 3:
         await message.answer(
@@ -110,7 +110,7 @@ async def confirm_creation(query: CallbackQuery, state: FSMContext) -> None:
     linode_api = LinodeAPI(API_KEY_LINODE)
     response = linode_api.create_linode(
         region,
-        label=f"vpn-bot-{query.id}",
+        label=f"vpn-instance-{query.id}",
         stackscript_id=STACKSCRIPT_ID,
         stackscript_data=ShadowsocksStackscriptData(PASSWORD=SHADOWSOCKS_PASSWORD),
     )
@@ -142,7 +142,7 @@ async def command_list(message: Message, state: FSMContext) -> None:
 
     msg = "Linodes:\n\n"
     for linode in linodes:
-        if not linode.label.lower().startswith("vpn-bot"):
+        if not linode.label.lower().startswith("vpn-instance"):
             continue
         msg += str(linode)
         msg += "\n\n"
@@ -173,7 +173,7 @@ async def command_delete(message: Message, state: FSMContext) -> None:
             text=f"{linode.id} {linode.region}", callback_data=str(linode.id)
         )
         for linode in linodes
-        if linode.label.lower().startswith("vpn-bot")
+        if linode.label.lower().startswith("vpn-instance")
     ]
     for button in buttons:
         linode_inline_builder.row(button)
