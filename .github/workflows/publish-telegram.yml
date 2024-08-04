@@ -1,4 +1,4 @@
-name: Deploy Telegram
+name: Publish Telegram
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
       - 'v*'
 
 jobs:
-  build-and-deploy:
+  build-and-publish:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code

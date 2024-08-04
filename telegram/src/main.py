@@ -33,7 +33,7 @@ class ChatIDRestrictionMiddleware(BaseMiddleware):
             return
 
         if str(chat_id) not in self.allowed_chat_ids:
-            return
+            return event.answer("You are not allowed to use this bot")
 
         return await handler(event, data)
 

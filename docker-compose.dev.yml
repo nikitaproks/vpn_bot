@@ -1,6 +1,6 @@
 services:
   telegram:
     build: ./telegram
-    command: sh -c "python src/telegram/main.py"
+    command: sh -c "python src/main.py"
     env_file: telegram/.env
     restart: always

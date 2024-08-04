@@ -24,7 +24,7 @@ jobs:
                 export PYTHONDONTWRITEBYTECODE=1
                 pip install --no-cache-dir -r requirements-dev.lock
         # Run Linting and Typechecking
-        -   name: Type check with MyPy
+        -   name: Type check and linting
             run: |
                 cd telegram
                 mypy .
