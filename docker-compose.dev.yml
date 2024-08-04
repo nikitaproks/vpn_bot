@@ -1,8 +1,6 @@
 services:
   telegram:
-    build:
-      context: ./telegram
-      dockerfile: Dockerfile.dev
-    command: sh -c "python telegram/main.py"
+    build: ./telegram
+    command: sh -c "python src/telegram/main.py"
     env_file: telegram/.env
     restart: always
