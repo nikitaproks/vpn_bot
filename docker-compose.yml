@@ -1,7 +1,7 @@
 services:
   telegram:
     image: mykytaproks/vpn_bot_telegram:${TAG}
-    command: sh -c "poetry run python telegram/main.py"
+    command: sh -c "python src/main.py"
     environment:
       - API_KEY_LINODE=${API_KEY_LINODE}
       - ALLOWED_CHAT_IDS=${ALLOWED_CHAT_IDS}
