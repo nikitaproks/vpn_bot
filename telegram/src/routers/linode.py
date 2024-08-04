@@ -8,9 +8,9 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 
-from linode_api import LinodeAPI, ShadowsocksStackscriptData, Region
+from src.linode_api import LinodeAPI, ShadowsocksStackscriptData, Region
 
-from settings import STACKSCRIPT_ID, SHADOWSOCKS_PASSWORD, LINODE_API_KEY
+from src.settings import STACKSCRIPT_ID, SHADOWSOCKS_PASSWORD, LINODE_API_KEY
 
 
 logger = logging.getLogger(__name__)

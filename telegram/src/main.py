@@ -4,10 +4,10 @@ from typing import Callable, Any, Awaitable
 
 from aiogram import Bot, Dispatcher, BaseMiddleware
 from aiogram.filters import CommandStart
-from aiogram.types import Message, CallbackQuery
+from aiogram.types import Message, CallbackQuery, TelegramObject
 
-from routers.linode import spawn_router
-from settings import BOT_API_KEY, ALLOWED_CHAT_IDS
+from src.routers.linode import spawn_router
+from src.settings import BOT_API_KEY, ALLOWED_CHAT_IDS
 
 logging.basicConfig(
     level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
@@ -21,8 +21,8 @@ class ChatIDRestrictionMiddleware(BaseMiddleware):
 
     async def __call__(
         self,
-        handler: Callable[[Message | CallbackQuery, dict[str, Any]], Awaitable[Any]],
-        event: Message | CallbackQuery,
+        handler: Callable[[TelegramObject, dict[str, Any]], Awaitable[Any]],
+        event: TelegramObject,
         data: dict[str, Any],
     ) -> Any:
         if isinstance(event, Message):
