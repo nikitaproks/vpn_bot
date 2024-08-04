@@ -10,7 +10,7 @@ from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 
 from src.linode_api import LinodeAPI, ShadowsocksStackscriptData, Region
 
-from src.settings import STACKSCRIPT_ID, SHADOWSOCKS_PASSWORD, LINODE_API_KEY
+from src.settings import STACKSCRIPT_ID, SHADOWSOCKS_PASSWORD, API_KEY_LINODE
 
 
 logger = logging.getLogger(__name__)
@@ -48,7 +48,7 @@ class Spawn(StatesGroup):
 # Step 0: spawn entry
 @spawn_router.message(Command("spawn"))
 async def command_spawn(message: Message, state: FSMContext) -> None:
-    linode_api = LinodeAPI(LINODE_API_KEY)
+    linode_api = LinodeAPI(API_KEY_LINODE)
     linodes = linode_api.list_linodes_all()
     vpn_linodes = [
         linode for linode in linodes if linode.label.lower().startswith("vpn-bot")
@@ -107,7 +107,7 @@ async def confirm_creation(query: CallbackQuery, state: FSMContext) -> None:
         )
         return
 
-    linode_api = LinodeAPI(LINODE_API_KEY)
+    linode_api = LinodeAPI(API_KEY_LINODE)
     response = linode_api.create_linode(
         region,
         label=f"vpn-bot-{query.id}",
@@ -137,7 +137,7 @@ async def confirm_creation(query: CallbackQuery, state: FSMContext) -> None:
 
 @spawn_router.message(Command("list"))
 async def command_list(message: Message, state: FSMContext) -> None:
-    linode_api = LinodeAPI(LINODE_API_KEY)
+    linode_api = LinodeAPI(API_KEY_LINODE)
     linodes = linode_api.list_linodes_all()
 
     msg = "Linodes:\n\n"
@@ -163,7 +163,7 @@ class Delete(StatesGroup):
 
 @spawn_router.message(Command("delete"))
 async def command_delete(message: Message, state: FSMContext) -> None:
-    linode_api = LinodeAPI(LINODE_API_KEY)
+    linode_api = LinodeAPI(API_KEY_LINODE)
     linodes = linode_api.list_linodes_all()
 
     # Server keyboard
@@ -225,7 +225,7 @@ async def confirm_deletion(query: CallbackQuery, state: FSMContext) -> None:
         )
         return
 
-    linode_api = LinodeAPI(LINODE_API_KEY)
+    linode_api = LinodeAPI(API_KEY_LINODE)
     success = linode_api.delete_linode(int(linode_id))
 
     if not success:

@@ -11,7 +11,7 @@ def get_or_raise(env_name: str) -> str:
 
 load_dotenv()
 
-LINODE_API_KEY = get_or_raise("LINODE_API_KEY")
+API_KEY_LINODE = get_or_raise("API_KEY_LINODE")
 BOT_API_KEY = get_or_raise("BOT_API_KEY")
 ALLOWED_CHAT_IDS = get_or_raise("ALLOWED_CHAT_IDS").split(",")
 STACKSCRIPT_ID = int(get_or_raise("STACKSCRIPT_ID"))
