@@ -1,13 +1,10 @@
 import asyncio
 import logging
-import sys
 from typing import Callable, Any, Awaitable
 
 from aiogram import Bot, Dispatcher, BaseMiddleware
-from aiogram.enums import ParseMode
 from aiogram.filters import CommandStart
 from aiogram.types import Message, CallbackQuery
-from aiogram.utils.markdown import hbold
 
 from routers.linode import spawn_router
 from settings import BOT_API_KEY, ALLOWED_CHAT_IDS

@@ -1,15 +1,14 @@
 import logging
 
-from pydantic import BaseModel, EmailStr
 
-from aiogram import Router, F
+from aiogram import Router
 from aiogram.types import Message, ReplyKeyboardRemove, CallbackQuery
 from aiogram.fsm.context import FSMContext
 from aiogram.fsm.state import State, StatesGroup
 from aiogram.filters import Command
 from aiogram.utils.keyboard import InlineKeyboardBuilder, InlineKeyboardButton
 
-from telegram.linode_api import LinodeAPI, ShadowsocksStackscriptData, Region, Linode
+from linode_api import LinodeAPI, ShadowsocksStackscriptData, Region
 
 from settings import STACKSCRIPT_ID, SHADOWSOCKS_PASSWORD, LINODE_API_KEY
 

@@ -1,8 +1,6 @@
 {
     "include": [
-        "telegram/src",
-        "schedule/src",
-        "shared/src"
+        "telegram/src"
     ],
     "exclude": [
         "**/node_modules",
@@ -14,21 +12,8 @@
         {
             "root": "telegram",
             "extraPaths": [
-                "telegram/.venv/lib/python3.12/site-packages",
-                "shared/"
+                "telegram/.venv/lib/python3.12/site-packages"
             ]
         },
-        {
-            "root": "schedule",
-            "extraPaths": [
-                "schedule/.venv/lib/python3.12/site-packages"
-            ]
-        },
-        {
-            "root": "shared",
-            "extraPaths": [
-                "shared/.venv/lib/python3.12/site-packages"
-            ]
-        }
     ]
 }
